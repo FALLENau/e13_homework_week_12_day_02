@@ -80,15 +80,10 @@ ImgView.prototype = {
     // console.log(imgs)
     imgs.forEach( function(img){
       var imgTag = document.createElement('img');
-      var ul = document.querySelector('#imgs');
-      imgTag.innerHtml(img)
+      var div = document.querySelector('#imgs');
+      // imgTag.innerText("hi")
       imgTag.src = img
-      ul.appendChild(imgTag)
-
-      // var text = document.createElement('p');
-      // li.appendChild(text);
-      // text.innerText = img.name + ": " + '"' + img.img + '"';
-      // ul.appendChild(li);
+      div.appendChild(imgTag)
     })
   }
 }
@@ -100,7 +95,7 @@ module.exports = ImgView;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var imgView = __webpack_require__(0);
+var ImgView = __webpack_require__(0);
 var data
 
 var makeRequest = function(url, callback){
@@ -135,27 +130,18 @@ var makeDbRequest = function(url, callback){
 
   requestImg.open("GET", url)
   requestImg.setRequestHeader('Content-Type', 'application/json')
+  requestImg.addEventListener('load', getRequestComplete)
   requestImg.send()
-  getRequestComplete(requestImg)
+
 }
 
-var getRequestComplete = function(imgs) {
-  var imagesArr = []
+var getRequestComplete = function() {
+  // console.log()
+  console.log(this.responseText);
 
-
-
-  imagesArr.push(imgs)
-
-  console.log(imgs)
-  console.log(imgs.readyState)
-  console.log(imgs.readyState)
-
-
-
-  console.log(imagesArr)
-
-
-
+  var imgString = this.responseText
+  var imgs = JSON.parse(imgString)
+  var imgView = new ImgView(imgs)
 }
 
 

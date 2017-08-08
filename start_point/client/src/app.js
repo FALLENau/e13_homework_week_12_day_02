@@ -1,4 +1,4 @@
-var imgView = require('./views/imgView');
+var ImgView = require('./views/imgView');
 var data
 
 var makeRequest = function(url, callback){
@@ -33,27 +33,18 @@ var makeDbRequest = function(url, callback){
 
   requestImg.open("GET", url)
   requestImg.setRequestHeader('Content-Type', 'application/json')
+  requestImg.addEventListener('load', getRequestComplete)
   requestImg.send()
-  getRequestComplete(requestImg)
+
 }
 
-var getRequestComplete = function(imgs) {
-  var imagesArr = []
+var getRequestComplete = function() {
+  // console.log()
+  console.log(this.responseText);
 
-
-
-  imagesArr.push(imgs)
-
-  console.log(imgs)
-  console.log(imgs.readyState)
-  console.log(imgs.readyState)
-
-
-
-  console.log(imagesArr)
-
-
-
+  var imgString = this.responseText
+  var imgs = JSON.parse(imgString)
+  var imgView = new ImgView(imgs)
 }
 
 

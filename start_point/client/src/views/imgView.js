@@ -8,15 +8,10 @@ ImgView.prototype = {
     // console.log(imgs)
     imgs.forEach( function(img){
       var imgTag = document.createElement('img');
-      var ul = document.querySelector('#imgs');
-      imgTag.innerHtml(img)
+      var div = document.querySelector('#imgs');
+      // imgTag.innerText("hi")
       imgTag.src = img
-      ul.appendChild(imgTag)
-
-      // var text = document.createElement('p');
-      // li.appendChild(text);
-      // text.innerText = img.name + ": " + '"' + img.img + '"';
-      // ul.appendChild(li);
+      div.appendChild(imgTag)
     })
   }
 }
