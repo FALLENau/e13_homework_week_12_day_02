@@ -28,11 +28,13 @@ app.post('/imgs', function(req, res){
 //   })
 // })out of commission
 //
-// app.delete('/delete', function(req, res){
+// app.post('/delete', function(req, res){
 //   db.collection('imgs').remove({}, function(err, result){
-//     res.redirect('/')
+//     // res.redirect('/')
+//     res.json(results)
 //   })
 // })
+
 
 MongoClient.connect('mongodb://localhost:27017/imgs', function(err, database){
   if(err){
