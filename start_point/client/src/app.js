@@ -13,6 +13,7 @@ var makeRequest = function(url, callback){
     reader.readAsDataURL(request.response)
   }
   request.open('GET', url)
+  request.setRequestHeader('Content-Type', 'application/json')
   request.send()
 }
 
