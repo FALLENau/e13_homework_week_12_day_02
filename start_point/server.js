@@ -27,13 +27,12 @@ app.post('/imgs', function(req, res){
 //     res.redirect('/')
 //   })
 // })out of commission
-//
-// app.post('/delete', function(req, res){
-//   db.collection('imgs').remove({}, function(err, result){
-//     // res.redirect('/')
-//     res.json(results)
-//   })
-// })
+
+app.post('/delete', function(req, res){
+  db.collection('imgs').remove({}, function(err, result){
+    res.redirect('/')
+  })
+})
 
 
 MongoClient.connect('mongodb://localhost:27017/imgs', function(err, database){
